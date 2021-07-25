@@ -82,11 +82,6 @@ p {
   display: inline;
 }
 
-.list-group {
-  padding: 0;
-  list-style: none;
-}
-
 .list-item {
   margin-bottom: 10px;
   padding: 1.5%;
@@ -94,18 +89,6 @@ p {
   background-color: var(--grey);
   color: var(--darkgrey);
   text-decoration: none;
-}
-
-.list-item:hover {
-  background-color: var(--dark);
-}
-
-.list-item:hover {
-  background-color: var(--grey);
-}
-
-.forcast{
-   border: 10px solid var(--black);
 }
 
 .displayinline{

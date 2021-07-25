@@ -28,7 +28,7 @@ var displayhistorylog = function () {
     }       
 }
 
-//GetAPI Today Weather Forcast by location
+//GetAPI Today Weather Forecast by location
 var GetTodayWeather = function (city) {
     var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=eb65f1cf1f7d8dd29c08ea981b35b0f6';
     fetch(apiUrl)
@@ -46,7 +46,7 @@ var GetTodayWeather = function (city) {
     });
 };
 
-//GetAPI Today Weather Forcast by location
+//GetAPI Today Weather Forecast by location
 var Get5daysWeather = function (city) {
     var apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city +'&cnt=5&appid=eb65f1cf1f7d8dd29c08ea981b35b0f6';
     fetch(apiUrl)
@@ -65,13 +65,14 @@ var Get5daysWeather = function (city) {
 };
 
 
-//GetAPI Currenty UV Weather Forcast by location
+//GetAPI Currenty UV Weather Forecast by location
 var GetTodayUV = function (city, lat, lon, dt) {
     var apiUrl = 'http://api.openweathermap.org/data/2.5/onecall/timemachine?lat=' + lat +'&lon='+lon+ '&dt='+dt+'&exclude=minutely,hourly,daily,alerts&appid=eb65f1cf1f7d8dd29c08ea981b35b0f6';
     fetch(apiUrl)
     .then(function (response) {
       if (response.ok) {
           response.json().then(function (data) {
+              console.log(data)
             showtodayforecast(city, data.current);
         });
       } else {
@@ -83,16 +84,13 @@ var GetTodayUV = function (city, lat, lon, dt) {
     });
 };
 
-
-
-//Show today forcast data
+//Show today forecast data
 var showtodayforecast = function (city,data) {
     //get element
     var todayEl = $('.today')
     var weatherEL = $('<div>');
     //reset today forecast data
     todayEl.empty();
-    console.log(data)
     //create element for city and date
     var cityanddateEl = $('<p>');
     var citynameEl = $('<h2>').addClass('displayinline').text(city + "     " );
@@ -122,7 +120,7 @@ var showtodayforecast = function (city,data) {
     todayEl.append(weatherEL);
 }
 
-//Show five days forcast data
+//Show five days forecast data
 var show5dayforecast = function (city, data) {
     //get element
     var fivedayEl = $('.fivedays')
@@ -198,7 +196,6 @@ var formClickHandler = function (event) {
     $('.today').parent('div').removeClass('forecast');
     var cityname = event.target.textContent;
     SearchInputEl.value = cityname;
-    console.log(event);
     event.preventDefault();
     //add city to history log
     addhistorylog(cityname);
