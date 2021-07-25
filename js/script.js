@@ -67,7 +67,7 @@ var Get5daysWeather = function (city) {
 
 //GetAPI Currenty UV Weather Forecast by location
 var GetTodayUV = function (city, lat, lon, dt) {
-    var apiUrl = 'http://api.openweathermap.org/data/2.5/onecall/timemachine?lat=' + lat +'&lon='+lon+ '&dt='+dt+'&exclude=minutely,hourly,daily,alerts&appid=eb65f1cf1f7d8dd29c08ea981b35b0f6';
+    var apiUrl = 'https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=' + lat +'&lon='+lon+ '&dt='+dt+'&exclude=minutely,hourly,daily,alerts&appid=eb65f1cf1f7d8dd29c08ea981b35b0f6';
     fetch(apiUrl)
     .then(function (response) {
       if (response.ok) {
