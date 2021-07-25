@@ -28,7 +28,7 @@ var displayhistorylog = function () {
     }       
 }
 
-//GetAPI Today Weather Forecast by location
+//GetAPI Today Weather Forecast by location but this API does not offer UV index info, so i use this API to get location(lat & lon) then call for new API to get all weather data
 var GetTodayWeather = function (city) {
     var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=eb65f1cf1f7d8dd29c08ea981b35b0f6';
     fetch(apiUrl)
@@ -65,7 +65,7 @@ var Get5daysWeather = function (city) {
 };
 
 
-//GetAPI Currenty UV Weather Forecast by location
+//GetAPI Currenty UV Weather Forecast by location use for get all today forecast data
 var GetTodayUV = function (city, lat, lon, dt) {
     var apiUrl = 'https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=' + lat +'&lon='+lon+ '&dt='+dt+'&exclude=minutely,hourly,daily,alerts&appid=eb65f1cf1f7d8dd29c08ea981b35b0f6';
     fetch(apiUrl)
@@ -138,7 +138,7 @@ var show5dayforecast = function (city, data) {
         var IconImageEl = $('<img>').attr('src', "http://openweathermap.org/img/w/" + data[i].weather[0].icon + ".png");
         var TempEl = $('<p>').text("Temp: " + ((((data[i].main.temp-273.15)*9)/5)+32).toFixed(2) +" ℉");
         var WindEl = $('<p>').text("Wind: "+ ((data[i].wind.speed)*2.237).toFixed(2)+" MPH");
-        var HumidityEL = $('<p>').text("UV Index: " + data[i].main.humidity + " %");
+        var HumidityEL = $('<p>').text("Humidity: " + data[i].main.humidity + " %");
         IconEl.append(IconImageEl);
         weathercardEL.append(
             DateEl,
