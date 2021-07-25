@@ -29,7 +29,7 @@ var displayhistorylog = function () {
 }
 
 //GetAPI Today Weather Forecast by location but this API does not offer UV index info, so i use this API to get location(lat & lon) then call for new API to get all weather data
-var GetTodayWeather = function (city) {
+var Getlocationdata = function (city) {
     var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=eb65f1cf1f7d8dd29c08ea981b35b0f6';
     fetch(apiUrl)
     .then(function (response) {
@@ -42,7 +42,7 @@ var GetTodayWeather = function (city) {
       }
     })
     .catch(function (error) {
-      showalertmsg("GetTodayWeather API: "+error);
+      showalertmsg("Getlocationdata API: "+error);
     });
 };
 
@@ -180,7 +180,7 @@ var formSubmitHandler = function (event) {
         //add city to history log
         addhistorylog(cityname);
         //Get today forecast
-        GetTodayWeather(cityname);
+        Getlocationdata(cityname);
         //Get 5 day forecast
         Get5daysWeather(cityname);
     } else {
@@ -200,7 +200,7 @@ var formClickHandler = function (event) {
     //add city to history log
     addhistorylog(cityname);
     //Get today forecast
-    GetTodayWeather(cityname);
+    Getlocationdata(cityname);
     //Get 5 day forecast
     Get5daysWeather(cityname);
    
