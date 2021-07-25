@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
+     <link rel="stylesheet" href="./css/style.css" />
+    <title>Weather Dashboard</title>
+  </head>
+    <body class="flex-column">    
+    <header>
+        <nav class="navbar">
+        <div class="container-fluid justify-content-center topic"><h1 class="title">Weather Dashboard</h1>
+        </div>
+        </nav>
+    </header>
+    <div class="card alert"></div>
+    <main class="flex-row justify-space-between">
+        <div class="col-12 col-md-4">
+            <!-- Search section -->
+            <div class="card">
+                 <h2 class="card-header">Search for City</h2>
+                 <div class="card-body">
+                    <form id="search-form" class="form w-100">
+                    <input id="citysearch-input" class="form-input w-100" type="text" placeholder="San Diego">
+                    <button class="btn btn-info btn-block">search</button>
+                    </form>
+                 </div>       
+            </div>
+            <!-- Search history section -->
+            <div class="card history">
+                 <div id="search-history" class="card-body"></div>
+            </div>
+        </div>
+        <div class="col-12 col-md-8">
+            <!-- today forcast section -->
+            <div class="card ">
+                <div class="card-body today">
+                </div>
+            </div>
+            <!-- 5 day forecast section -->
+            <div class="card">   
+                <div class="fivedays container"></div>
+            </div>
+        </div>
+    </main>
+</body>   
+</div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="./js/script.js"></script>
+    </body>
+</html>
