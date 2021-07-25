@@ -42,7 +42,7 @@ var GetTodayWeather = function (city) {
       }
     })
     .catch(function (error) {
-      showalertmsg(error);
+      showalertmsg("GetTodayWeather API: "+error);
     });
 };
 
@@ -60,7 +60,7 @@ var Get5daysWeather = function (city) {
       }
     })
     .catch(function (error) {
-      showalertmsg(error);
+      showalertmsg("Get5daysWeather API: "+error);
     });
 };
 
@@ -79,7 +79,7 @@ var GetTodayUV = function (city, lat, lon, dt) {
       }
     })
     .catch(function (error) {
-      showalertmsg(error);
+      showalertmsg("GetTodayUV API: "+error);
     });
 };
 
