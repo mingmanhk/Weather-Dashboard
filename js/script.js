@@ -46,13 +46,14 @@ var Getlocationdata = function (city) {
     });
 };
 
-//GetAPI Today Weather Forecast by location
+//GetAPI 5 day Weather Forecast by location
 var Get5daysWeather = function (city) {
-    var apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city +'&cnt=5&appid=eb65f1cf1f7d8dd29c08ea981b35b0f6';
+    var apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city +'&cnt=40&appid=eb65f1cf1f7d8dd29c08ea981b35b0f6';
     fetch(apiUrl)
     .then(function (response) {
       if (response.ok) {
-          response.json().then(function (data) {
+        response.json().then(function (data) {
+                    console.log(data)
           show5dayforecast(city, data.list);
         });
       } else {
@@ -72,7 +73,6 @@ var GetTodayUV = function (city, lat, lon, dt) {
     .then(function (response) {
       if (response.ok) {
           response.json().then(function (data) {
-              console.log(data)
             showtodayforecast(city, data.current);
         });
       } else {
@@ -130,8 +130,9 @@ var show5dayforecast = function (city, data) {
     //reset five days forecast data
     fivedayEl.empty();
     //create element 
-    for (var i = 0; i < data.length; i++) {
-        var weathercardEL = $('<div>');
+  for (var i = 0; i < data.length; i++) {
+    if ((i % 8) == 0) {
+      var weathercardEL = $('<div>');
         weathercardEL.addClass('list-item col-2');
         var DateEl = $('<h4>').text(moment((data[i].dt_txt)).format('l'));
         var IconEl = $('<p>');
@@ -148,6 +149,8 @@ var show5dayforecast = function (city, data) {
             HumidityEL
         );
         weatherEL.append(weathercardEL);
+      }
+        
     }
     fivedayEl.append(weatherEL);
 }   
