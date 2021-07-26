@@ -53,7 +53,6 @@ var Get5daysWeather = function (city) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-                    console.log(data)
           show5dayforecast(city, data.list);
         });
       } else {
