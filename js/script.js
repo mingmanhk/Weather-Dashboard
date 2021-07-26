@@ -64,7 +64,6 @@ var Get5daysWeather = function (city) {
     });
 };
 
-
 //GetAPI Currenty UV Weather Forecast by location use for get all today forecast data
 var GetTodayUV = function (city, lat, lon, dt) {
     var apiUrl = 'https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=' + lat +'&lon='+lon+ '&dt='+dt+'&exclude=minutely,hourly,daily,alerts&appid=eb65f1cf1f7d8dd29c08ea981b35b0f6';
@@ -106,8 +105,21 @@ var showtodayforecast = function (city,data) {
     var TempEl = $('<p>').text("Temp: "+ ((((data.temp-273.15)*9)/5)+32).toFixed(2) +" ℉");
     var WindEl = $('<p>').text("Wind: "+ (data.wind_speed*2.237).toFixed(2)+" MPH");
     var HumidityEl = $('<p>').text("Humidity: " + data.humidity + " %");
+    var UVIndexEl = $('<p>').text("UV Index: ");
+    var UVIndexValueEl = $('<div>').addClass('displayinline').text(data.uvi);
+    // UV Index Number	Exposure Level	Color Code
+    // 2 or less	Low	Green
+    // 3 to 5	Moderate	Yellow
+    // 6 to 7	High	Orange
+    // 8 to 10	Very High	Red
+    // 11+	Extreme	Violet
+   if ((data.uvi)<= 2) { UVIndexValueEl.css({'background-color': 'green', 'color': 'white'})}
+   else if (data.uvi >= 3 && data.uvi <= 5) {UVIndexValueEl.css({'background-color': 'yellow', 'color': 'white'})}
+   else if (data.uvi >= 6 && data.uvi <= 7) {UVIndexValueEl.css({'background-color': 'orange', 'color': 'white'})}
+   else if (data.uvi >= 8 && data.uvi <= 10) { UVIndexValueEl.css({'background-color': 'red', 'color': 'white'})}
+   else if (data.uvi >= 11) { UVIndexValueEl.css({ 'background-color': 'violet', 'color': 'white'})}
 
-    var UVIndexEl = $('<p>').text("UV Index: " + data.uvi+"");
+    UVIndexEl.append(UVIndexValueEl)
     weatherEL.append(
             cityanddateEl,
             TempEl,
